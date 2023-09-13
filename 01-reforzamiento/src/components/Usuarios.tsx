@@ -3,7 +3,7 @@ import { useUsuarios } from '../hooks/useUsuarios';
 
 export const Usuarios = () => {
 
-    const { usuarios, cargarUsuarios } = useUsuarios();
+    const { usuarios, paginaAnterior, paginaSiguente } = useUsuarios();
 
     const renderItem = ( {id, first_name, last_name, email, avatar}: Usuario) => {
         return (
@@ -42,11 +42,21 @@ export const Usuarios = () => {
                 }
             </tbody>
         </table>
+
         <button
             className='btn btn-primary'
-            onClick={ cargarUsuarios }
+            onClick={ paginaAnterior }
         >
-            Siguiente
+            anteriores
+        </button>
+        
+        &nbsp;
+
+        <button
+            className='btn btn-primary'
+            onClick={ paginaSiguente }
+        >
+            Siguientes
         </button>
     </>
   )

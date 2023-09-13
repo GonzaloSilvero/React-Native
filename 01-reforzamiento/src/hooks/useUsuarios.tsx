@@ -11,7 +11,7 @@ export const useUsuarios = () => {
 
     useEffect(() => {
         // llamado a la API
-        cargarUsuarios(); 
+        cargarUsuarios();
     }, [])
 
     const cargarUsuarios = async () => {
@@ -22,17 +22,28 @@ export const useUsuarios = () => {
         })
         
         if ( resp.data.data.length > 0 ){
-            console.log(paginaRef.current)
             setUsuarios( resp.data.data );
-            paginaRef.current ++;
         } else {
+            paginaRef.current --;
             alert('no hay mas registros');
-            console.log(paginaRef.current)
+        }
+    }
+
+    const paginaSiguente = () => {
+        paginaRef.current ++;
+        cargarUsuarios()
+    }
+
+    const paginaAnterior = () => {
+        if (paginaRef.current > 1) {
+        paginaRef.current --;
+        cargarUsuarios()
         }
     }
 
     return {
         usuarios,
-        cargarUsuarios,
+        paginaSiguente,
+        paginaAnterior,
     }
 }

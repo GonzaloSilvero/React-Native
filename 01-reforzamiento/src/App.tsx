@@ -1,5 +1,6 @@
 import React from 'react'
-import { Usuarios } from './components/Usuarios';
+import { Formularios } from './components/Formularios';
+// import { Usuarios } from './components/Usuarios';
 // import { Login } from './components/Login';
 // import { ContadorConHook } from './components/ContadorConHook';
 // import { Funciones } from './typescript/Funciones';
@@ -18,7 +19,8 @@ export const App = () => {
       {/* <Contador /> */}
       {/* <ContadorConHook /> */}
       {/* <Login/> */}
-      <Usuarios />
+      {/* <Usuarios /> */}
+      <Formularios />
 
     </div>
   )
