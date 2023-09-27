@@ -21,7 +21,7 @@ export const PositionScreen = () => {
         },
         cajaMorada: {
             width: 100,
-            height: 100,
+            height: 100, 
             backgroundColor: '#5856D6',
             borderWidth: 10,
             borderColor: 'white',
