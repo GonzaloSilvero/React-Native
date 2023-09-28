@@ -20,6 +20,45 @@ export const CalculadoraScreen = () => {
 
         </View>
 
+        <View style={ styles.fila }>
+
+            {/* Boton */}
+            <BotonCal texto='7' />
+            <BotonCal texto='8' />
+            <BotonCal texto='9' />
+            <BotonCal texto='x' color='#FF9427'/>
+
+        </View>
+
+        <View style={ styles.fila }>
+
+            {/* Boton */}
+            <BotonCal texto='4' />
+            <BotonCal texto='5' />
+            <BotonCal texto='6' />
+            <BotonCal texto='-' color='#FF9427'/>
+
+        </View>
+
+        <View style={ styles.fila }>
+
+            {/* Boton */}
+            <BotonCal texto='1' />
+            <BotonCal texto='2' />
+            <BotonCal texto='3' />
+            <BotonCal texto='+' color='#FF9427'/>
+
+        </View>
+
+        <View style={ styles.fila }>
+
+            {/* Boton */}
+            <BotonCal texto='0' ancho />
+            <BotonCal texto='.' />
+            <BotonCal texto='=' color='#FF9427'/>
+
+        </View>
+
     </View>
   )
 }

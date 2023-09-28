@@ -1,20 +1,26 @@
 import React from 'react'
-import { Text, View } from 'react-native'
+import { Text, TouchableOpacity, View } from 'react-native'
 import { styles } from '../theme/appTheme'
 
 interface Props {
     texto: string;
     color?: string;
+    ancho?: boolean;
 }
 
-export const BotonCal = ({ texto, color = '#2D2D2D'}: Props ) => {
+export const BotonCal = ({ texto, color = '#2D2D2D', ancho = false }: Props ) => {
   return (
-    <View style={{
-        ...styles.boton,
-        backgroundColor: color
-    }}>
-        <Text style={ styles.botonTexto }>{ texto }</Text>
-    </View>
-
+    <TouchableOpacity>
+        <View style={{
+            ...styles.boton,
+            backgroundColor: color,
+            width: ( ancho ) ? 180 : 80
+        }}>
+            <Text style={{ 
+                ...styles.botonTexto,
+                color: ( color === '#9B9B9B' ) ? color= 'black' : color= 'white'
+            }}>{ texto }</Text>
+        </View>
+    </TouchableOpacity>
   )
 }
