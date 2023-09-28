@@ -15,14 +15,15 @@ const styles = StyleSheet.create({
     container: {
         flex: 1,
         backgroundColor: '#28425B',
-        justifyContent: 'center'
+        justifyContent: 'center',
     },
     cajaMorada: {
         width: 100,
         height: 100,
         borderWidth: 10,
         borderColor: 'white',
-        backgroundColor: '#5856D6'
+        backgroundColor: '#5856D6',
+        alignSelf: 'flex-end'
     },
     cajaNaranja: {
         width: 100,
@@ -32,11 +33,11 @@ const styles = StyleSheet.create({
         backgroundColor: '#F0A23B'
     },
     cajaAzul: {
-        // width: 100,
+        width: 100,
         height: 100,
-        // flex: 1, no sirve porque aplia en todo el espacio que tiene por ser el ultimo en renderizarse
         borderWidth: 10,
         borderColor: 'white',
-        backgroundColor: '#28C4D9'
+        backgroundColor: '#28C4D9',
+        alignSelf: 'center'
     },
 });
