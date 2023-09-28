@@ -10,6 +10,7 @@ const App = () => {
         backgroundColor='black'
         barStyle='light-content'
       />
+      
       <CalculadoraScreen />
     </SafeAreaView>
   )
