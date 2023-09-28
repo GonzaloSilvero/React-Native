@@ -15,28 +15,26 @@ const styles = StyleSheet.create({
     container: {
         flex: 1,
         backgroundColor: '#28425B',
-        justifyContent: 'space-between', // sin esto deberia funcionar tambien, pero nada funciona
+        justifyContent: 'center',
+        alignItems: 'center'
     },
     cajaMorada: {
-        // width: 100,
-        // height: 100,
-        flex: 2, //1
+        width: 100,
+        height: 100,
         borderWidth: 10,
         borderColor: 'white',
         backgroundColor: '#5856D6',
     },
     cajaNaranja: {
-        // width: 100,
-        // height: 100,
-        flex: 2, //1
+        width: 100,
+        height: 100,
         borderWidth: 10,
         borderColor: 'white',
         backgroundColor: '#F0A23B',
     },
     cajaAzul: {
-        // width: 100,
-        // height: 100,
-        flex: 4, //2
+        width: 100,
+        height: 100,
         borderWidth: 10,
         borderColor: 'white',
         backgroundColor: '#28C4D9',
