@@ -103,7 +103,12 @@ export const CalculadoraScreen = () => {
 
   return (
     <View style={ styles.calculadoraContainer }>
-        <Text style={ styles.resultadoChico }>{ numeroAnterior }</Text>
+
+        {
+            ( numeroAnterior !== '0' ) && (
+                <Text style={ styles.resultadoChico }>{ numeroAnterior }</Text>
+            )
+        }
         <Text 
             style={ styles.resultado }
             numberOfLines={ 1 }
