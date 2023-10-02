@@ -68,6 +68,15 @@ export const CalculadoraScreen = () => {
         }
     }
 
+    const cambiarNumPorAnterior = () => {
+        if ( numero.endsWith('.') ) {
+            setNumeroAnterior( numero.slice(0,-1) );
+        } else {
+            setNumeroAnterior( numero );
+        }
+        setNumero('0')
+    }
+
   return (
     <View style={ styles.calculadoraContainer }>
         <Text style={ styles.resultadoChico }>{ numeroAnterior }</Text>
