@@ -1,15 +1,22 @@
-import React, { useState } from 'react'
-import { Text, View } from 'react-native'
+import React, { useRef, useState } from 'react'
+import { Text, View, StatusBar } from 'react-native';
 import { styles } from '../theme/appTheme'
 import { BotonCal } from '../components/BotonCal'
+
+enum Operadores {
+    sumar, restar, multiplar, dividir
+}
 
 export const CalculadoraScreen = () => {
 
     const [numeroAnterior, setNumeroAnterior] = useState('0')
     const [numero, setNumero] = useState('0')
 
+    const ultimaOperacion = useRef<Operadores>()
+
     const limpiar = () => {
         setNumero('0');
+        setNumeroAnterior('0');
     }
 
     const armarNumero = ( numeroTexto: string ) => {
@@ -77,6 +84,23 @@ export const CalculadoraScreen = () => {
         setNumero('0')
     }
 
+    const btnDividir = () => {
+        cambiarNumPorAnterior();
+        ultimaOperacion.current = Operadores.dividir;
+    }
+    const btnMultiplicar = () => {
+        cambiarNumPorAnterior();
+        ultimaOperacion.current = Operadores.multiplar;
+    }
+    const btnRestar = () => {
+        cambiarNumPorAnterior();
+        ultimaOperacion.current = Operadores.restar;
+    }
+    const btnSumar = () => {
+        cambiarNumPorAnterior();
+        ultimaOperacion.current = Operadores.sumar;
+    }
+
   return (
     <View style={ styles.calculadoraContainer }>
         <Text style={ styles.resultadoChico }>{ numeroAnterior }</Text>
@@ -95,7 +119,7 @@ export const CalculadoraScreen = () => {
             <BotonCal texto='C' color='#9B9B9B' accion={ limpiar }/>
             <BotonCal texto='+/-' color='#9B9B9B' accion={ positivoNegativo }/>
             <BotonCal texto='del' color='#9B9B9B' accion={ btnDelete }/>
-            <BotonCal texto='/' color='#FF9427' accion={ limpiar }/>
+            <BotonCal texto='/' color='#FF9427' accion={ btnDividir }/>
 
         </View>
 
@@ -105,7 +129,7 @@ export const CalculadoraScreen = () => {
             <BotonCal texto='7' accion={ armarNumero }/>
             <BotonCal texto='8' accion={ armarNumero }/>
             <BotonCal texto='9' accion={ armarNumero }/>
-            <BotonCal texto='x' color='#FF9427' accion={ limpiar }/>
+            <BotonCal texto='x' color='#FF9427' accion={ btnMultiplicar }/>
 
         </View>
 
@@ -115,7 +139,7 @@ export const CalculadoraScreen = () => {
             <BotonCal texto='4' accion={ armarNumero }/>
             <BotonCal texto='5' accion={ armarNumero }/>
             <BotonCal texto='6' accion={ armarNumero }/>
-            <BotonCal texto='-' color='#FF9427' accion={ limpiar }/>
+            <BotonCal texto='-' color='#FF9427' accion={ btnRestar }/>
 
         </View>
 
@@ -125,7 +149,7 @@ export const CalculadoraScreen = () => {
             <BotonCal texto='1' accion={ armarNumero }/>
             <BotonCal texto='2' accion={ armarNumero }/>
             <BotonCal texto='3' accion={ armarNumero }/>
-            <BotonCal texto='+' color='#FF9427' accion={ limpiar }/>
+            <BotonCal texto='+' color='#FF9427' accion={ btnSumar }/>
 
         </View>
 
