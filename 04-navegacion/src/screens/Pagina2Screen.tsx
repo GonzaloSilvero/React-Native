@@ -5,10 +5,10 @@ import { useNavigation } from '@react-navigation/native';
 
 export const Pagina2Screen = () => {
 
-  const navigator = useNavigation();
+  const navigation = useNavigation();
 
   useEffect(() => { //esto sobre escribe el predeterminado del padre
-    navigator.setOptions({
+    navigation.setOptions({
       title: 'Hola Mundo',
       headerBackTitle: 'Atras'
     })
@@ -22,8 +22,9 @@ export const Pagina2Screen = () => {
 
        <Button 
         title='Ir a Pagina 3'
-        onPress={ () => navigator.navigate('Pagina3Screen') }
+        onPress={ () => navigation.navigate('Pagina3Screen') }
        />
+      
     </View>
   )
 }
