@@ -5,7 +5,7 @@ import { SettingsScreen } from '../screens/SettingsScreen';
 
 const Drawer = createDrawerNavigator();
 
-const MenuLateralBasico = () => {
+export const MenuLateralBasico = () => {
   return (
     <Drawer.Navigator>
       <Drawer.Screen name="StackNavigator" component={StackNavigator} />
@@ -13,5 +13,3 @@ const MenuLateralBasico = () => {
     </Drawer.Navigator>
   );
 }
-
-export default MenuLateralBasico;
