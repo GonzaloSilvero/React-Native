@@ -2,13 +2,10 @@ import { View, Text, Image, TouchableOpacity } from 'react-native'
 import React from 'react'
 import { styles } from '../theme/appTheme'
 import { StackScreenProps } from '@react-navigation/stack'
-import { RootStackParams } from '../navigator/StackNavigator'
-import { useNavigation } from '@react-navigation/native'
 
+interface Props extends StackScreenProps<any, any>{};
 
-export const SettingsScreen = () => {
-
-  const navigation = useNavigation();
+export const SettingsScreen = ({navigation}: Props) => {
   
   return (
     <View>
@@ -26,24 +23,25 @@ export const SettingsScreen = () => {
       />
     </View>
 
-     <View style={ styles.menuContainer}>
-     <TouchableOpacity 
-      style={ styles.MenuBoton}
-     >
-       <Text style={ styles.menuTexto}>Perfil</Text>
-     </TouchableOpacity>
-  
-     <TouchableOpacity 
-      style={ styles.MenuBoton}
-     >
-       <Text style={ styles.menuTexto}>Home</Text>
-     </TouchableOpacity>
+    <View style={ styles.menuContainer}>
+      <TouchableOpacity 
+        style={ styles.MenuBoton}
+        >
+        <Text style={ styles.menuTexto}>Perfil</Text>
+      </TouchableOpacity>
+    
+      <TouchableOpacity 
+        style={ styles.MenuBoton}
+        onPress={ () => navigation.navigate('Pagina1Screen')}
+      >
+        <Text style={ styles.menuTexto}>Home</Text>
+      </TouchableOpacity>
 
-     <TouchableOpacity 
-      style={ styles.MenuBoton}
-     >
-       <Text style={ styles.menuTexto}>Contactanos</Text>
-     </TouchableOpacity>
+      <TouchableOpacity 
+        style={ styles.MenuBoton}
+      >
+        <Text style={ styles.menuTexto}>Contactanos</Text>
+      </TouchableOpacity>
    </View>
   </View>
 
