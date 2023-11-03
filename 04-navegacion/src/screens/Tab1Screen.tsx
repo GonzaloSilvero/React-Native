@@ -6,12 +6,6 @@ import { colores, styles } from '../theme/appTheme'
 
 
 export const Tab1Screen = () => {
-  
-  useEffect(() => {
-    console.log('Tab1Screen effect')
-  }, [])
-  
-  
   return (
     <View style={ styles.globalMargin }>
       <Text style={ styles.title }>iCONOS</Text>
