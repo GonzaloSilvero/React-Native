@@ -1,11 +1,11 @@
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { createMaterialBottomTabNavigator } from '@react-navigation/material-bottom-tabs';
 import { Tab1Screen } from '../screens/Tab1Screen';
-import { Tab2Screen } from '../screens/Tab2Screen';
 import { StackNavigator } from './StackNavigator';
 import { colores } from '../theme/appTheme';
-import { Platform, Text } from 'react-native';
+import { Platform } from 'react-native';
 import { TopTabNavigator } from './TopTabNavigator';
+import Icon from 'react-native-vector-icons/Ionicons';
 
 export const Tabs = () => {
  
@@ -21,28 +21,25 @@ const TabsAndroid = () => {
   return (
     <BottomTabAndroid.Navigator
       sceneAnimationEnabled={ true }
-      barStyle={{
-        backgroundColor: colores.primary
-      }}
       screenOptions={ ({ route }) => ({
         tabBarIcon: ({focused, color,}) => {
   
           let iconName: string = '';
           switch (route.name) {
             case 'Tab1Screen':
-              iconName = 'T1'
+              iconName = 'accessibility-outline'
             break;
   
             case 'TopTabNavigator':
-              iconName = 'T2'
+              iconName = 'grid-outline'
             break;
   
             case 'StackNavigator':
-              iconName = 'SN'
+              iconName = 'layers-outline'
             break;
           }
   
-          return <Text style={{ color }}>{ iconName }</Text>
+          return <Icon name={ iconName } size={25} color={ color } />
         }
       })}
     >
@@ -76,19 +73,19 @@ const BottomTabIos = createBottomTabNavigator();
           let iconName: string = '';
           switch (route.name) {
             case 'Tab1Screen':
-              iconName = 'T1'
+              iconName = 'accessibility-outline'
             break;
-
+  
             case 'TopTabNavigator':
-              iconName = 'T2'
+              iconName = 'grid-outline'
             break;
-
+  
             case 'StackNavigator':
-              iconName = 'SN'
+              iconName = 'albums-outline'
             break;
           }
 
-          return <Text style={{ color }}>{ iconName }</Text>
+          return <Icon name={ iconName } size={25} color={ color } />
         }
       })}
       

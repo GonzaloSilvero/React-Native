@@ -1,11 +1,10 @@
 import React from 'react'
 import { DrawerContentComponentProps, DrawerContentScrollView, createDrawerNavigator } from '@react-navigation/drawer';
-import { StackNavigator } from './StackNavigator';
-// import { SettingsScreen } from '../screens/SettingsScreen';
 import { Image, Text, TouchableOpacity, View, useWindowDimensions } from 'react-native';
 import { styles } from '../theme/appTheme';
 import { SettingsStack } from './SettingsStack';
 import { Tabs } from './Tabs';
+import Icon from 'react-native-vector-icons/Ionicons';
 
 const Drawer = createDrawerNavigator();
 
@@ -29,10 +28,10 @@ export const MenuLateral = () => {
 const MenuInterno = ( {navigation}: DrawerContentComponentProps) => {
 
   return (
-    <DrawerContentScrollView>
+    <DrawerContentScrollView style={{ paddingHorizontal: 0}}>
 
       {/* Parte del Avatar */}
-      <View style={ styles.avatarContainer}>
+      <View style={ styles.avatarContainer }>
         <Image 
           source={{ 
             uri: 'https://hwchamber.co.uk/wp-content/uploads/2022/04/avatar-placeholder.gif'
@@ -41,19 +40,22 @@ const MenuInterno = ( {navigation}: DrawerContentComponentProps) => {
         />
       </View>
 
-      {/* Opciones de manu */}
-      <View style={ styles.menuContainer}>
+      {/* Opciones de menu */}
+      <View style={ styles.menuContainer }>
         <TouchableOpacity 
-          style={ styles.MenuBoton}
+          style={ styles.MenuBoton }
           onPress={ () => navigation.navigate('Tabs')}
         >
-          <Text style={ styles.menuTexto}>Home</Text>
+          <Icon name='home-outline' size={25} />
+          <Text style={ styles.menuTexto }>Home</Text>
+
         </TouchableOpacity>
 
         <TouchableOpacity 
           style={ styles.MenuBoton}
           onPress={ () => navigation.navigate('Ajustes')}
         >
+          <Icon name='options-outline' size={25} />
           <Text style={ styles.menuTexto}>Ajustes</Text>
         </TouchableOpacity>
       </View>

@@ -29,7 +29,7 @@ export const styles = StyleSheet.create({
     },
     avatarContainer: {
         alignItems: 'center',
-        marginTop: 20
+        marginTop: 20,
     },
     avatar: {
         width: 100,
@@ -41,9 +41,11 @@ export const styles = StyleSheet.create({
         marginHorizontal: 50,
     },
     MenuBoton: {
-        marginVertical: 10
+        marginVertical: 5,
+        flexDirection: 'row'
     },
     menuTexto: {
-        fontSize: 20
+        fontSize: 20,
+        marginLeft: 5,
     }
 });
