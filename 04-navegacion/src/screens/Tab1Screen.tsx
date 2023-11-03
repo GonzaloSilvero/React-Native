@@ -8,7 +8,7 @@ import { colores, styles } from '../theme/appTheme'
 export const Tab1Screen = () => {
   return (
     <View style={ styles.globalMargin }>
-      <Text style={ styles.title }>iCONOS</Text>
+      <Text style={ styles.title }>ICONOS</Text>
 
       {/* los iconos van dentro de textos */}
       <Text>

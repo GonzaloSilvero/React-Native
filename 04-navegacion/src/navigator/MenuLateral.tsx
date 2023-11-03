@@ -2,9 +2,9 @@ import React from 'react'
 import { DrawerContentComponentProps, DrawerContentScrollView, createDrawerNavigator } from '@react-navigation/drawer';
 import { Image, Text, TouchableOpacity, View, useWindowDimensions } from 'react-native';
 import { styles } from '../theme/appTheme';
-import { SettingsStack } from './SettingsStack';
 import { Tabs } from './Tabs';
 import Icon from 'react-native-vector-icons/Ionicons';
+import { SettingsScreen } from '../screens/SettingsScreen';
 
 const Drawer = createDrawerNavigator();
 
@@ -20,7 +20,7 @@ export const MenuLateral = () => {
       drawerContent={ (props) => <MenuInterno { ...props }/>}
     >
       <Drawer.Screen name="Tabs" component={Tabs} />
-      <Drawer.Screen name="Ajustes" component={SettingsStack} />
+      <Drawer.Screen name="Ajustes" component={SettingsScreen} />
     </Drawer.Navigator>
   );
 }
