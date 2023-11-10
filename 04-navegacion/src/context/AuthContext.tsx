@@ -30,10 +30,14 @@ export const AuthProvider = ({ children }: any) => {
     
     const [authState, dispatch] = useReducer( authReducer, authInitialState)
 
+    const signIn = () => {
+        dispatch({ type: 'signIn' }) //al ser de tipo AuthAction, solo viene el signIn
+    }   //el dispatch es el unico medio para modificar el estado
+    
     return(
         <AuthContext.Provider value={{
             authState,
-            signIn: () => {}
+            signIn
         }}>
             { children }
         </AuthContext.Provider>
