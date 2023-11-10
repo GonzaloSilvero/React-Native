@@ -3,6 +3,7 @@ import Icon from 'react-native-vector-icons/Ionicons';
 
 import { View, Text } from 'react-native'
 import { colores, styles } from '../theme/appTheme'
+import { TouchableIcon } from '../components/TouchableIcon';
 
 
 export const Tab1Screen = () => {
@@ -12,14 +13,14 @@ export const Tab1Screen = () => {
 
       {/* los iconos van dentro de textos */}
       <Text>
-        <Icon name="airplane-outline" size={80} color={ colores.primary } />
-        <Icon name="accessibility-outline" size={80} color={ colores.primary } />
-        <Icon name="add-circle-outline" size={80} color={ colores.primary } />
-        <Icon name="build-outline" size={80} color={ colores.primary } />
-        <Icon name="chatbubble-outline" size={80} color={ colores.primary } />
-        <Icon name="cloudy-outline" size={80} color={ colores.primary } />
-        <Icon name="eye-outline" size={80} color={ colores.primary } />
-        <Icon name="heart-outline" size={80} color={ colores.primary } />
+        <TouchableIcon iconName="airplane-outline"  />
+        <TouchableIcon iconName="accessibility-outline"  />
+        <TouchableIcon iconName="add-circle-outline"  />
+        <TouchableIcon iconName="build-outline"  />
+        <TouchableIcon iconName="chatbubble-outline"  />
+        <TouchableIcon iconName="cloudy-outline"  />
+        <TouchableIcon iconName="eye-outline"  />
+        <TouchableIcon iconName="heart-outline"  />
       </Text>
     </View>
   )
