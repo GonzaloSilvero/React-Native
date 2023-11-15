@@ -1,0 +1,46 @@
+    PARA CREAR ACCIONES
+
+    Siempre que se quiera crear una nueva accion que cambie el estado se deben 
+modificar:
+    -AuthContext.tsx
+    -*Archivo donde va a estar el lanzador de la accion como un boton*
+    -authReducer
+
+    En el Reducer va a estar unicamente el estado que quiero que tenga 
+la app en Storem al realizar una accion. 
+    En el AuthAction se colocan 
+los "type" de acciones que puede haber, y en el authReducer se coloca
+el cambio de estado que quiero que realice al ejecutar dicha accion,
+por lo general tomando los casos dentro de un Switch.
+---------------------------------------
+    case 'logOut':
+        return {
+            ...state,
+            isLoggedIn: false,
+            username: undefined
+        }
+---------------------------------------
+    En el AuthContext se tiene que agregar la accion en las Props (AuthContextProps)
+para que reconozca la accion en otras pantallas. En el contenido del Provider se debe poner la accion como 
+funcion que ejecuta un dispatch de "type: AuthAction" y retornar dicha accion dentro de AuthContext.Provider.
+---------------------------------------
+    const logOut = () => {
+        dispatch({ type: 'logOut' }) 
+    } 
+
+    AuthContext.Provider value={{
+        authState,
+        signIn,
+        logOut,
+        changeFavoriteIcon
+    }}>
+        { children }
+    /AuthContext.Provider>
+---------------------------------------
+    En el archivo donde se quiera disparar la accion se tiene que usar un useContext para acceder
+al listado de acciones y utilizar esa la accion elegida en un componente, por ejemplo, un boton,
+
+    const { logOut, authState } = useContext( AuthContext)
+
+    { authState.isLoggedIn && Button title='LogOut' onPress={ logOut }/> }
+

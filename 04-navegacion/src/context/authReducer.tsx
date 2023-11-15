@@ -2,7 +2,9 @@ import { AuthState } from "./AuthContext";
 
 type AuthAction = 
     | { type: 'signIn' }
-    | { type: 'chandeFavIcon', payload: string };
+    | { type: 'logout' }
+    | { type: 'changeFavIcon', payload: string }
+    | { type: 'changeUsername', payload: string }
     // payload es la info adicional que se le manda a la accion
 
 
@@ -19,12 +21,26 @@ export const authReducer = ( state: AuthState, action: AuthAction): AuthState =>
                 username: 'no-username-yet'
             }
         
-        case 'chandeFavIcon':
+        case 'logout':
+
+            return {
+                ...state,
+                isLoggedIn: false,
+                username: undefined
+            }
+        
+        case 'changeFavIcon':
             return {
                 ...state,
                 favoriteIcon: action.payload
             }
 
+        case 'changeUsername':
+            return {
+                ...state,
+                username: action.payload
+             }
+        
         default:
             return state;
     }

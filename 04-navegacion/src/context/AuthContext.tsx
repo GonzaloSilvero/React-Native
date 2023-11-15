@@ -19,7 +19,9 @@ export const authInitialState: AuthState = {
 export interface AuthContextProps {
     authState: AuthState;
     signIn: () => void;
+    logout: () => void;
     changeFavoriteIcon:  (iconName: string) => void;
+    changeUsername:  (username: string) => void;
 }
 
 
@@ -35,15 +37,25 @@ export const AuthProvider = ({ children }: any) => {
         dispatch({ type: 'signIn' }) //al ser de tipo AuthAction, solo viene el signIn
     }   //el dispatch es el unico medio para modificar el estado
     
+    const logout = () => {
+        dispatch({ type: 'logout' }) 
+    } 
+
     const changeFavoriteIcon = ( iconName: string) => {
-        dispatch({ type: 'chandeFavIcon', payload: iconName})
+        dispatch({ type: 'changeFavIcon', payload: iconName})
+    }
+
+    const changeUsername = (username: string) => {
+        dispatch({ type: 'changeUsername', payload: username})
     }
 
     return(
         <AuthContext.Provider value={{
             authState,
             signIn,
-            changeFavoriteIcon
+            logout,
+            changeFavoriteIcon,
+            changeUsername
         }}>
             { children }
         </AuthContext.Provider>

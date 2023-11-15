@@ -1,8 +1,9 @@
-import React, { useEffect } from 'react'
+import React, { useContext, useEffect } from 'react'
 import { View, Text } from 'react-native'
 import { styles } from '../theme/appTheme'
 import { StackScreenProps } from '@react-navigation/stack'
 import { RootStackParams } from '../navigator/StackNavigator'
+import { AuthContext } from '../context/AuthContext'
 
 //forma rapida para salir del paso
 // interface RouterParams {
@@ -18,6 +19,7 @@ export const PersonaScreen = ({route, navigation}: Props) => {
 
   // const params = route.params as RouterParams;
   const params = route!.params
+  const { changeUsername } = useContext( AuthContext)
 
   useEffect(() => {
       
@@ -26,6 +28,12 @@ export const PersonaScreen = ({route, navigation}: Props) => {
     })
 
   }, [])
+
+  useEffect(() => {
+    //el argumento me lo esta pidiendo el AuthContext
+    changeUsername(params.nombre)
+  }, [])
+  
   
 
   return (
