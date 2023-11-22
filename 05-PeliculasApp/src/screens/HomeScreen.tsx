@@ -5,6 +5,9 @@ import { MoviePoster } from '../components/MoviePoster';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import Carousel from 'react-native-snap-carousel';
 import { HorizontalSlider } from '../components/HorizontalSlider';
+import { GradientBackground } from '../components/GradientBackground';
+// import { getColors } from 'react-native-image-colors';
+// import ImageColors from 'react-native-image-colors';
 
 const {width: windowWidth} = Dimensions.get('window');
 
@@ -12,6 +15,16 @@ export const HomeScreen = () => {
 
     const { nowPlaying, popular, topRated, upcomnig, isLoadig } = useMovies();
     const { top } = useSafeAreaInsets();
+
+    const getPosterColors = async (index: number) => {
+      const movie = nowPlaying[index]
+      const uri = `https://image.tmdb.org/t/p/w500${ movie.poster_path }`
+      // const colors = await ImageColors.getColors(uri, {
+      //   fallback: "#228B22",
+      // })
+
+      // console.log(colors)
+    }
 
 
     if ( isLoadig ) {
@@ -23,25 +36,28 @@ export const HomeScreen = () => {
     }
 
   return (
-    <ScrollView>
-        
-      <View style={{ marginTop: top + 20}}>
-        
-        <View style={{ height: 440 }}>
-          <Carousel
-            data={ nowPlaying }
-            renderItem={ ({item}: any) => <MoviePoster movie={ item }/>}
-            sliderWidth={ windowWidth }
-            itemWidth={ 300 }
-          />
+    <GradientBackground >
+      <ScrollView>
+          
+        <View style={{ marginTop: top + 20}}>
+          
+          <View style={{ height: 440 }}>
+            <Carousel
+              data={ nowPlaying }
+              renderItem={ ({item}: any) => <MoviePoster movie={ item }/>}
+              sliderWidth={ windowWidth }
+              itemWidth={ 300 }
+              onSnapToItem={ index => getPosterColors(index)  }
+            />
+          </View>
+
+          <HorizontalSlider title='en cine' movies={ nowPlaying }/>
+          <HorizontalSlider title='Populares' movies={ popular }/>
+          <HorizontalSlider title='top rated' movies={ topRated }/>
+          <HorizontalSlider title='upcoming' movies={ upcomnig }/>
+
         </View>
-
-        <HorizontalSlider title='en cine' movies={ nowPlaying }/>
-        <HorizontalSlider title='Populares' movies={ popular }/>
-        <HorizontalSlider title='top rated' movies={ topRated }/>
-        <HorizontalSlider title='upcoming' movies={ upcomnig }/>
-
-      </View>
-    </ScrollView>
+      </ScrollView>
+    </GradientBackground>
   )
 }
