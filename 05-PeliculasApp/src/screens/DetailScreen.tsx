@@ -1,20 +1,23 @@
 import { StackScreenProps } from '@react-navigation/stack'
 import React from 'react'
-import { View, Text, Image, StyleSheet, Dimensions, ScrollView } from 'react-native'
+import { View, Text, Image, StyleSheet, Dimensions, ScrollView, ActivityIndicator } from 'react-native';
 
 import { RootStackParams } from '../navigators/Navigation';
 // ESTA DEFINIDO EN EL NAVEGADOR EN VEZ DE HACERLO DESDE ACA
 import Icon from 'react-native-vector-icons/Ionicons';
+import { useMovieDetails } from '../hooks/useMovieDetails';
+import { MovieDetails } from '../components/MovieDetails';
+import { TouchableOpacity } from 'react-native-gesture-handler';
 
 const screenHeight = Dimensions.get('screen').height;
 interface Props extends StackScreenProps<RootStackParams, 'DetailScreen'> {}
 
-export const DetailScreen = ({ route }: Props) => {
+export const DetailScreen = ({ route, navigation }: Props) => {
 
   const movie = route.params;
   const uri = `https://image.tmdb.org/t/p/w500${ movie.poster_path }`
 
-  console.log(movie.original_title)
+  const { isLoafing, cast, movieFull } = useMovieDetails( movie.id );
 
   return (
     <ScrollView>
@@ -30,13 +33,24 @@ export const DetailScreen = ({ route }: Props) => {
         <Text style={ styles.title }>{movie.title}</Text>
       </View>
 
-      <View style={ styles.marginContainer}>
-        <Icon
-          name="star-outline"
-          color='grey'
-          size={ 20 }
-        />
-      </View>
+        {
+          isLoafing
+            ? <ActivityIndicator size={ 35 } color="grey" style={{ marginTop: 20 }} />
+            : <MovieDetails movieFull={movieFull!} cast={cast}/>
+        }
+
+        {/* Boton para cerrar */}
+        <View style={ styles.backButtom }>
+          <TouchableOpacity
+            onPress={ () => navigation.pop() }
+          >
+            <Icon 
+              color='white'
+              name='arrow-back-outline'
+              size={ 50 }
+              />
+          </TouchableOpacity>
+        </View>
 
     </ScrollView>
 
@@ -78,5 +92,11 @@ const styles = StyleSheet.create({
   title: {
     fontSize: 20,
     fontWeight: 'bold'
+  },
+  backButtom: {
+    position: 'absolute',
+    elevation: 9,
+    top: 20,
+    left: 5
   }
 }); 
