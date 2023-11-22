@@ -21,13 +21,17 @@ export const MoviePoster = ({ movie, height = 420, width = 300 }: Props) => {
       style={{
         width,
         height,
-        marginHorizontal: 5
+        marginHorizontal: 5,
+        paddingBottom: 20,
+        paddingHorizontal: 6,
       }}
     >
+      <View style={ styles.imageContainer }> 
         <Image 
           source={{ uri }}
           style={ styles.image }
-        />
+          />
+        </View>
     </TouchableOpacity>
   )
 }
@@ -37,4 +41,18 @@ const styles = StyleSheet.create({
       flex:1,
       borderRadius: 18
     },
+    imageContainer: {
+      flex: 1,
+      borderRadius: 18,
+      overflow: 'hidden',
+      shadowColor: "#000",
+      shadowOffset: {
+        width: 0,
+        height: 12,
+      },
+      shadowOpacity: 0.58,
+      shadowRadius: 16.00,
+
+      elevation: 24,
+    }
 }); 
